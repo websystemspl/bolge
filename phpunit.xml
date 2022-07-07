@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="tests/autoload.php" colors="true" cacheResult ="false">
+    <testsuites>
+        <testsuite name="Bolge">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

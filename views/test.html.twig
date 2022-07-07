@@ -1,0 +1,53 @@
+<div class="bootstrap-wrapper">
+    <div class="container my-5 bg-light p-5">
+        <div class="row">
+            <div class="col-12">                
+                <h1>Hello Bolge!</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Address</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                        <tr>
+                            <td scope="row">{{ customer.id }}</td>
+                            <td>{{ customer.firstName }}</td>
+                            <td>{{ customer.lastName }}</td>
+                            <td>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Country</th>
+                                            <th>City</th>
+                                            <th>Address</th>
+                                            <th>Post code</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for address in customer.addresses %}
+                                        <tr>
+                                            <td scope="row">{{ address.country }}</td>
+                                            <td>{{ address.city }}</td>
+                                            <td>{{ address.address }}</td>
+                                            <td>{{ address.postCode }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>{{ customer.created|date("m/d/Y") }}</td>
+                        </tr>
+                        {% endfor %}                    
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

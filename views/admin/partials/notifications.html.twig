@@ -1,0 +1,13 @@
+{% block notifications %}
+    <div class="row">
+        <div class="col-12">
+            {% for label, flashes in session.getFlashBag.all() %}
+                {% for flash in flashes %}
+                    <div class="alert alert-{{ label }}" role="alert">
+                        {{ flash }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

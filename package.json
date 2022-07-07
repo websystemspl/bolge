@@ -1,0 +1,29 @@
+{
+  "name": "bolge",
+  "version": "1.0.4",
+  "description": "Bolge",
+  "main": "index.js",
+  "scripts": {
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress  --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "keywords": [],
+  "author": "Web Systems",
+  "dependencies": {
+    "@googlemaps/js-api-loader": "^1.11.4",
+    "bootstrap": "^4.6.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.6.0",
+    "laravel-mix": "^6.0.19",
+    "moment": "^2.29.1",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "clean-webpack-plugin": "*",
+    "sass": "^1.32.12",
+    "sass-loader": "^11.1.0"
+  }
+}

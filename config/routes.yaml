@@ -1,0 +1,23 @@
+# Don't change it avoid index path symfony notification
+index:
+    path: /
+    controller: Bolge\App\Core\DefaultController::defaultAction
+    methods: [GET, POST]
+    
+# Routes ################################################################
+
+front_test:
+    path: /test
+    controller: Bolge\App\Controller\Front\TestController::indexAction
+    methods: [GET]
+
+admin_test:
+    path: /wp-admin/test/index
+    controller: Bolge\App\Controller\Admin\TestController::indexAction
+    methods: [GET]
+
+api_test:
+    path: /api/test
+    controller: Bolge\App\Controller\Api\TestController::indexAction
+    methods: [GET]
+

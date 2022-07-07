@@ -1,0 +1,22 @@
+plugin_slug: "bolge"
+plugin_slug_url: "bolge"
+framework: Bolge\App\Service\Wordpress
+env: prod
+
+paths:
+    WS_PATH: "/"
+    WS_PATH_VIEWS: "/views"
+    WS_PATH_ASSETS: "/assets"
+    WS_PATH_CACHE: "/cache"
+
+urls:
+    WS_URL: ""
+    WS_URL_VIEWS: "views"
+    WS_URL_ASSETS: "assets"
+    WS_URL_CACHE: "cache"
+    WS_URL_DIST: "dist"
+
+database_options: 
+    settings_options: "bolge_settings"
+
+database_meta:

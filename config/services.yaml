@@ -1,0 +1,50 @@
+parameters:
+
+services:
+  _defaults:
+    autoconfigure: true
+    autowire: true
+
+  # Load Services
+  Bolge\App\Service\:
+    resource: '../App/Service'
+    public: true
+
+  # Load Transformers
+  Bolge\App\Dto\Response\Transformer\:
+    resource: '../App/Dto/Response/Transformer'
+
+  # Load Controllers
+  Bolge\App\Controller\:
+    resource: '../App/Controller/'
+    public: true
+
+  # Load Core Abstract Controller
+  Bolge\App\Core\Controller:
+    class: Bolge\App\Core\Controller
+    public: true
+
+  # Load Framework Interface
+  Bolge\App\Core\FrameworkInterface: '@Bolge\App\Service\Wordpress'
+  
+  # Load Doctrine
+  Doctrine\ORM\EntityManagerInterface: '@doctrine.orm.entity_manager'
+
+  # Load DI Container Interface
+  Symfony\Component\DependencyInjection\ContainerInterface: '@service_container'
+
+  # Load Event Subscribers
+  Bolge\App\EventSubscriber\:
+    resource: '../App/EventSubscriber'
+    public: true    
+
+  # Load Event Dispatcher
+  Symfony\Component\EventDispatcher\EventDispatcherInterface:
+    public: true
+    class: Symfony\Component\EventDispatcher\EventDispatcher
+    # Call Subscribers
+    calls:
+      - addSubscriber: ['@Bolge\App\EventSubscriber\WordpressAdminSubscriber']
+      - addSubscriber: ['@Bolge\App\EventSubscriber\WordpressFrontSubscriber']
+
+

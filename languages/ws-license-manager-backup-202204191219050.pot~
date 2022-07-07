@@ -1,0 +1,439 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WS License Manager\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-19 10:08+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.5; wp-5.8.3\n"
+"X-Domain: ws-license-manager"
+
+#: views/admin/license-index.html.twig:74
+#: views/admin/plugins-index.html.twig:49
+msgid "&laquo; Previous"
+msgstr ""
+
+#: views/admin/license-edit.html.twig:111
+#: views/admin/packages-index.html.twig:22
+#: views/admin/license-index.html.twig:41
+#: views/admin/plugins-index.html.twig:20
+msgid "Action"
+msgstr ""
+
+#: views/admin/dashboard-index.html.twig:112
+msgid "Activate plugin"
+msgstr ""
+
+#: views/admin/plugins-create.html.twig:35
+#: views/admin/license-create.html.twig:66
+#: views/admin/license-edit.html.twig:96 views/admin/plugins-index.html.twig:42
+msgid "Add"
+msgstr ""
+
+#: views/admin/license-create.html.twig:25
+#: views/admin/license-edit.html.twig:26
+msgid "Add license to Plugin"
+msgstr ""
+
+#: views/admin/license-create.html.twig:15
+#: views/admin/license-edit.html.twig:16
+msgid "Add license to user"
+msgstr ""
+
+#: App/Controller/Admin/PluginsController.php:65
+#: App/Controller/Admin/LicenseController.php:222
+msgid "Added"
+msgstr ""
+
+#: views/admin/packages-index.html.twig:18
+msgid "Author"
+msgstr ""
+
+#: App/Controller/Admin/PackagesController.php:54
+msgid "Can't delete file"
+msgstr ""
+
+#: views/admin/plugins-create.html.twig:34
+#: views/admin/license-edit.html.twig:68 views/admin/plugins-edit.html.twig:35
+msgid "Cancel"
+msgstr ""
+
+#: views/admin/dashboard-index.html.twig:25
+msgid "Check license status"
+msgstr ""
+
+#: views/emails/expiration.html.twig:4
+msgid "Click here to renew your license"
+msgstr ""
+
+#: views/admin/settings-index.html.twig:7
+#: views/admin/woocommerce-settings-index.html.twig:7
+msgid "Common settings"
+msgstr ""
+
+#: views/admin/license-index.html.twig:14
+msgid "Create license"
+msgstr ""
+
+#: views/admin/woocommerce-settings-index.html.twig:15
+msgid "Create license on status"
+msgstr ""
+
+#: views/admin/license-create.html.twig:7
+msgid "Create new license"
+msgstr ""
+
+#: views/admin/license-edit.html.twig:110
+#: views/admin/license-index.html.twig:38
+#: views/admin/plugins-index.html.twig:19
+msgid "Created"
+msgstr ""
+
+#: views/admin/plugins-create.html.twig:27
+#: views/admin/license-create.html.twig:59
+#: views/admin/license-edit.html.twig:61 views/admin/plugins-edit.html.twig:28
+msgid "Date created"
+msgstr ""
+
+#: views/admin/license-create.html.twig:53
+#: views/admin/license-edit.html.twig:55
+msgid "Date expiry"
+msgstr ""
+
+#: views/emails/expiration.html.twig:3
+msgid "Date expiry:"
+msgstr ""
+
+#: views/admin/license-index.html.twig:53
+msgid "days"
+msgstr ""
+
+#: views/admin/license-edit.html.twig:124
+#: views/admin/packages-index.html.twig:38
+#: views/admin/license-index.html.twig:59
+#: views/admin/plugins-index.html.twig:35
+msgid "Delete"
+msgstr ""
+
+#: App/Controller/Admin/PluginsController.php:124
+#: App/Controller/Admin/LicenseController.php:193
+#: App/Controller/Admin/LicenseController.php:243
+msgid "Deleted"
+msgstr ""
+
+#: views/admin/license-edit.html.twig:109
+msgid "Domain"
+msgstr ""
+
+#: views/admin/dashboard-index.html.twig:90
+msgid "Download plugin"
+msgstr ""
+
+#: views/admin/license-index.html.twig:56
+#: views/admin/plugins-index.html.twig:31
+msgid "Edit"
+msgstr ""
+
+#: views/admin/dashboard-index.html.twig:29
+#: views/admin/dashboard-index.html.twig:60
+#: views/admin/dashboard-index.html.twig:94
+#: views/admin/dashboard-index.html.twig:116
+#: views/admin/dashboard-index.html.twig:147
+#: views/admin/dashboard-index.html.twig:161
+msgid "Endpoint"
+msgstr ""
+
+#: App/Controller/Admin/LicenseController.php:225
+#: App/Controller/Admin/LicenseController.php:228
+msgid "Error when try to add"
+msgstr ""
+
+#: App/Controller/Admin/PluginsController.php:127
+#: App/Controller/Admin/PluginsController.php:130
+#: App/Controller/Admin/LicenseController.php:196
+#: App/Controller/Admin/LicenseController.php:199
+#: App/Controller/Admin/LicenseController.php:246
+#: App/Controller/Admin/LicenseController.php:249
+msgid "Error when try to remove"
+msgstr ""
+
+#: App/Controller/Admin/PluginsController.php:68
+#: App/Controller/Admin/PluginsController.php:71
+#: App/Controller/Admin/PluginsController.php:106
+#: App/Controller/Admin/PluginsController.php:109
+#: App/Controller/Admin/LicenseController.php:175
+#: App/Controller/Admin/LicenseController.php:178
+msgid "Error when try to save in database"
+msgstr ""
+
+#: views/admin/license-index.html.twig:39
+msgid "Expiry"
+msgstr ""
+
+#: views/admin/packages-index.html.twig:21
+msgid "File"
+msgstr ""
+
+#: App/Controller/Admin/PackagesController.php:52
+msgid "File deleted"
+msgstr ""
+
+#: views/admin/dashboard-index.html.twig:56
+msgid "Get metadata of plugin"
+msgstr ""
+
+#: views/admin/dashboard-index.html.twig:143
+msgid "Get user license list"
+msgstr ""
+
+#: views/admin/dashboard-index.html.twig:134
+msgid "Headless API endpoints"
+msgstr ""
+
+#: views/admin/settings-index.html.twig:23
+msgid "Headless domain"
+msgstr ""
+
+#: views/emails/expiration.html.twig:1
+msgid "Hello, Your license is near to be expired"
+msgstr ""
+
+#: views/admin/settings-index.html.twig:15
+msgid "How many days to send notification email before license expiry"
+msgstr ""
+
+#: views/admin/license-edit.html.twig:108
+#: views/admin/license-index.html.twig:33
+#: views/admin/plugins-index.html.twig:16
+msgid "ID"
+msgstr ""
+
+#: App/Controller/Admin/WoocommerceController.php:39
+msgid "Install Woocommerce"
+msgstr ""
+
+#: views/admin/license-index.html.twig:67
+msgid "Items"
+msgstr ""
+
+#: views/admin/license-create.html.twig:35
+#: views/admin/license-edit.html.twig:37
+msgid "Last order ID for license"
+msgstr ""
+
+#: views/admin/packages-index.html.twig:19
+msgid "Last updated"
+msgstr ""
+
+#: views/admin/dashboard-index.html.twig:16
+msgid "License API endpoints"
+msgstr ""
+
+#: views/hooks/woocommerce-variation-domain-limit.html.twig:3
+msgid "License domain limit"
+msgstr ""
+
+#: views/admin/license-edit.html.twig:78
+msgid "License domains"
+msgstr ""
+
+#: views/admin/license-edit.html.twig:7
+msgid "License edit"
+msgstr ""
+
+#: views/hooks/woocommerce-variation-expiry.html.twig:3
+msgid "License expiry"
+msgstr ""
+
+#: views/admin/license-create.html.twig:41
+#: views/admin/license-edit.html.twig:43
+msgid "License Key"
+msgstr ""
+
+#: views/admin/license-index.html.twig:36
+msgid "License key"
+msgstr ""
+
+#: views/admin/license-index.html.twig:7
+msgid "License list"
+msgstr ""
+
+#: App/Controller/Admin/LicenseController.php:154
+msgid "License not found"
+msgstr ""
+
+#: App/Controller/Front/CronController.php:78
+msgid "License renewal notification"
+msgstr ""
+
+#: App/Controller/Admin/LicenseController.php:128
+msgid "License saved"
+msgstr ""
+
+#. Description of the plugin
+msgid "Licenses plugin"
+msgstr ""
+
+#: views/admin/license-create.html.twig:47
+#: views/admin/license-edit.html.twig:49 views/admin/license-index.html.twig:37
+msgid "Limit"
+msgstr ""
+
+#: views/emails/expiration.html.twig:4
+msgid "My account"
+msgstr ""
+
+#: views/admin/plugins-create.html.twig:15
+#: views/admin/plugins-edit.html.twig:16
+#: views/admin/packages-index.html.twig:16
+#: views/admin/plugins-index.html.twig:17
+msgid "Name"
+msgstr ""
+
+#: views/admin/license-index.html.twig:88
+#: views/admin/plugins-index.html.twig:63
+msgid "Next &raquo;"
+msgstr ""
+
+#: views/hooks/woocommerce-plugin-field.html.twig:6
+msgid "None"
+msgstr ""
+
+#: App/Controller/Admin/SettingsController.php:39
+#: App/Controller/Admin/WoocommerceController.php:48
+msgid "Nothing changed"
+msgstr ""
+
+#: views/admin/packages-index.html.twig:7
+msgid "Packages"
+msgstr ""
+
+#: views/admin/dashboard-index.html.twig:33
+#: views/admin/dashboard-index.html.twig:67
+#: views/admin/dashboard-index.html.twig:101
+#: views/admin/dashboard-index.html.twig:118
+#: views/admin/dashboard-index.html.twig:149
+#: views/admin/dashboard-index.html.twig:163
+msgid "Parameters"
+msgstr ""
+
+#: views/admin/license-index.html.twig:35
+#: views/hooks/woocommerce-plugin-field.html.twig:4
+msgid "Plugin"
+msgstr ""
+
+#: views/admin/plugins-create.html.twig:7
+msgid "Plugin add"
+msgstr ""
+
+#: views/admin/plugins-edit.html.twig:7
+msgid "Plugin edit"
+msgstr ""
+
+#: App/Controller/Admin/PluginsController.php:91
+msgid "Plugin not found"
+msgstr ""
+
+#: views/admin/dashboard-index.html.twig:47
+msgid "Plugin update API endpoints"
+msgstr ""
+
+#: views/admin/plugins-index.html.twig:7
+msgid "Plugins list"
+msgstr ""
+
+#: views/admin/dashboard-index.html.twig:157
+msgid "Renew user license"
+msgstr ""
+
+#: views/admin/dashboard-index.html.twig:35
+#: views/admin/dashboard-index.html.twig:71
+#: views/admin/dashboard-index.html.twig:105
+#: views/admin/dashboard-index.html.twig:122
+#: views/admin/dashboard-index.html.twig:151
+#: views/admin/dashboard-index.html.twig:165
+msgid "Response"
+msgstr ""
+
+#: views/admin/settings-index.html.twig:30
+#: views/admin/license-edit.html.twig:69 views/admin/plugins-edit.html.twig:36
+#: views/admin/woocommerce-settings-index.html.twig:26
+msgid "Save"
+msgstr ""
+
+#: views/admin/license-index.html.twig:27
+msgid "Search"
+msgstr ""
+
+#: App/EventSubscriber/WordpressAdminSubscriber.php:51
+msgid "Settings"
+msgstr ""
+
+#: App/Controller/Admin/SettingsController.php:37
+msgid "Settings saved"
+msgstr ""
+
+#: views/admin/license-edit.html.twig:37
+msgid "Show order"
+msgstr ""
+
+#: views/admin/plugins-create.html.twig:21
+#: views/admin/plugins-edit.html.twig:22
+#: views/admin/packages-index.html.twig:20
+#: views/admin/plugins-index.html.twig:18
+msgid "Slug"
+msgstr ""
+
+#: views/admin/license-index.html.twig:40
+msgid "Status"
+msgstr ""
+
+#: App/Controller/Admin/WoocommerceController.php:46
+msgid "Status changed"
+msgstr ""
+
+#: App/Controller/Admin/PluginsController.php:103
+#: App/Controller/Admin/LicenseController.php:172
+msgid "Updated"
+msgstr ""
+
+#: views/admin/license-index.html.twig:34
+msgid "User"
+msgstr ""
+
+#: views/admin/packages-index.html.twig:17
+msgid "Version"
+msgstr ""
+
+#. Author of the plugin
+msgid "Web Systems"
+msgstr ""
+
+#. Name of the plugin
+#: views/admin/dashboard-index.html.twig:7
+msgid "WS License Manager"
+msgstr ""
+
+#: App/Service/Woocommerce.php:102
+msgid "Ws License Manager"
+msgstr ""
+
+#: App/Controller/Admin/LicenseController.php:202
+msgid "You can't remove license because this license has domains"
+msgstr ""
+
+#: App/Controller/Admin/PluginsController.php:133
+msgid "You can't remove plugin because this plugin has licenses"
+msgstr ""
+
+#: views/emails/expiration.html.twig:2
+msgid "Your license for:"
+msgstr ""
