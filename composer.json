@@ -1,12 +1,11 @@
 {
     "autoload": {
         "psr-4": {
-            "Bolge\\App\\": "App/",
-            "Websystems\\BolgeCore\\": "vendor/websystemspl/bolge-core/src"
+            "Bolge\\App\\": "App/"
         }
     },
     "require": {
-        "websystemspl/bolge-core": "^v1.0"
+        "websystemspl/bolge-core": "^v1.1"
     },
     "repositories":[
         {
