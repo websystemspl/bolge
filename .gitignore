@@ -2,3 +2,4 @@ cache/
 vendor/
 dist/
 node_modules
+composer.lock

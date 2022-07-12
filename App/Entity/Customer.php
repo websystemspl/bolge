@@ -30,7 +30,6 @@ class Customer
      */    
     private string $lastName;
 
-
     /**
      * @ORM\OneToMany(targetEntity="Address", mappedBy="customer")
      * @var Address[]

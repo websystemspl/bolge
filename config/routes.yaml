@@ -7,7 +7,7 @@ index:
 # Routes ################################################################
 
 front_test:
-    path: /test
+    path: /darek
     controller: Bolge\App\Controller\Front\TestController::indexAction
     methods: [GET]
 
