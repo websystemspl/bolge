@@ -5,11 +5,9 @@ namespace Bolge\App\Service;
 use Twig\Environment;
 use Twig\TwigFunction;
 use Twig\Loader\FilesystemLoader;
-use Bolge\App\Core\Core;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Response;
-use Bolge\App\Core\FrameworkInterface;
+use Websystems\BolgeCore\BolgeCore;
 use Bolge\App\Service\SettingsInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class View implements ViewInterface
@@ -17,16 +15,12 @@ class View implements ViewInterface
     private Environment $twig;
     private Session $session;
     private SettingsInterface $settings;
-    private FrameworkInterface $framework;
-    private EntityManagerInterface $em;
 
-    public function __construct(SettingsInterface $settings, FrameworkInterface $framework, EntityManagerInterface $em)
+    public function __construct(SettingsInterface $settings)
     {
         $this->settings = $settings;
-        $this->framework = $framework;
-        $this->em = $em;
         $this->session = new Session();          
-        $this->buildTwig();        
+        $this->buildTwig();     
     }
 
     public function render(string $path, array $params = []): Response
@@ -75,11 +69,13 @@ class View implements ViewInterface
         });
 
         $getAdminUrlFromRoute = new TwigFunction('get_admin_url_from_route', function ($route, $values = []) {
-            return Core::getAdminUrlFromRoute($route, $values);
+            $app = BolgeCore::getInstance();
+            return $app->getAdminUrlFromRoute($route, $values);
         }); 
                
         $getUrlFromRoute = new TwigFunction('get_url_from_route', function ($route, $values = []) {
-            return Core::getUrlFromRoute($route, $values);
+            $app = BolgeCore::getInstance();
+            return $app->getUrlFromRoute($route, $values);
         });
         
         $nonce = new TwigFunction('wp_nonce_field', function ($nonceField) {

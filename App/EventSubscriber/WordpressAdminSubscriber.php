@@ -3,25 +3,25 @@ declare(strict_types = 1);
 
 namespace Bolge\App\EventSubscriber;
 
-use Bolge\App\Core\Core;
-use Symfony\Component\HttpFoundation\Response;
-use Bolge\App\Core\Event\BootEvent;
-use Bolge\App\Core\FrameworkInterface;
+use Websystems\BolgeCore\BolgeCore;
 use Bolge\App\Service\SettingsInterface;
-use Bolge\App\Core\Event\HttpKernelRequestEvent;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Bolge\App\Service\WordpressInterface;
+use Websystems\BolgeCore\Event\BootEvent;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Websystems\BolgeCore\Event\HttpKernelRequestEvent;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class WordpressAdminSubscriber implements EventSubscriberInterface
 {
     private ?Response $response;
     private SettingsInterface $settings;
-    private FrameworkInterface $framework;
+    private WordpressInterface $wordpress;
 
-    public function __construct(SettingsInterface $settings, FrameworkInterface $framework)
+    public function __construct(SettingsInterface $settings, WordpressInterface $wordpress)
     {
         $this->settings = $settings;
-        $this->framework = $framework;
+        $this->wordpress = $wordpress;
     }
 
     public static function getSubscribedEvents()
@@ -38,7 +38,7 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
 
     public function pluginSettingsLink()
     {
-        $this->framework->add_filter('plugin_action_links_' . $this->settings->get()->plugin_slug . '/' . $this->settings->get()->plugin_slug . '.php', [$this, 'settingsLinkInPlugins']);
+        $this->wordpress->add_filter('plugin_action_links_' . $this->settings->get()->plugin_slug . '/' . $this->settings->get()->plugin_slug . '.php', [$this, 'settingsLinkInPlugins']);
     }
 
     /**
@@ -49,7 +49,8 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
      */
     public function settingsLinkInPlugins(array $links): array
     {
-        $url = '<a href="'. Core::getAdminUrlFromRoute('admin_test') .'">' . __( 'Settings', 'bolge' ) . '</a>';
+        $app = BolgeCore::getInstance();
+        $url = '<a href="'. $app->getAdminUrlFromRoute('admin_test') .'">' . __( 'Settings', 'bolge' ) . '</a>';
         array_unshift($links, $url);
         return $links;
     }    
@@ -57,7 +58,7 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
     public function addAdminPages(BootEvent $bootEvent)
     {
         $this->response = $bootEvent->getResponse();
-        $this->framework->add_action('admin_menu', [$this, 'loadToWpAdmin'], 1);
+        $this->wordpress->add_action('admin_menu', [$this, 'loadToWpAdmin'], 1);
     }
 
     /**
@@ -67,8 +68,8 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
      */
     public function loadToWpAdmin(): void
     {
-        $this->framework->add_menu_page( __( 'Bolge', 'bolge' ), __( 'Bolge', 'bolge' ),'manage_options','test',[$this, 'printResponse'],'dashicons-admin-network',10);
-        //$this->framework->add_submenu_page('dashboard', __( 'Test', 'bolge' ), __( 'Test', 'bolge' ),'manage_options','license',[$this, 'printResponse'],10);  
+        $this->wordpress->add_menu_page( __( 'Bolge', 'bolge' ), __( 'Bolge', 'bolge' ),'manage_options','test',[$this, 'printResponse'],'dashicons-admin-network',10);
+        //$this->wordpress->add_submenu_page('dashboard', __( 'Test', 'bolge' ), __( 'Test', 'bolge' ),'manage_options','license',[$this, 'printResponse'],10);  
     }
 
     /**
@@ -78,7 +79,7 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
      */
     public function loadAssets()
     {
-        $this->framework->add_action('admin_enqueue_scripts', [$this, 'admin_assets'], 99);
+        $this->wordpress->add_action('admin_enqueue_scripts', [$this, 'admin_assets'], 99);
     }
 
     /**
@@ -102,8 +103,8 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
      */
     public function admin_assets(): void
     {
-        $this->framework->wp_enqueue_style( 'admin-styles', $this->framework->plugins_url() . '/' . $this->settings->get()->plugin_slug_url . '/' . $this->settings->get()->urls->WS_URL_DIST . '/css/admin.css' );
-        $this->framework->wp_enqueue_script( 'admin-scripts', $this->framework->plugins_url() . '/' . $this->settings->get()->plugin_slug_url . '/' . $this->settings->get()->urls->WS_URL_DIST . '/js/admin.js' );
+        $this->wordpress->wp_enqueue_style( 'admin-styles', $this->wordpress->plugins_url() . '/' . $this->settings->get()->plugin_slug_url . '/' . $this->settings->get()->urls->WS_URL_DIST . '/css/admin.css' );
+        $this->wordpress->wp_enqueue_script( 'admin-scripts', $this->wordpress->plugins_url() . '/' . $this->settings->get()->plugin_slug_url . '/' . $this->settings->get()->urls->WS_URL_DIST . '/js/admin.js' );
     }    
     
     public function changeRequestPath(HttpKernelRequestEvent $event)

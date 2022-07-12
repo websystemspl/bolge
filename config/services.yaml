@@ -18,25 +18,11 @@ services:
   Bolge\App\Controller\:
     resource: '../App/Controller/'
     public: true
-
-  # Load Core Abstract Controller
-  Bolge\App\Core\Controller:
-    class: Bolge\App\Core\Controller
-    public: true
-
-  # Load Framework Interface
-  Bolge\App\Core\FrameworkInterface: '@Bolge\App\Service\Wordpress'
   
-  # Load Doctrine
-  Doctrine\ORM\EntityManagerInterface: '@doctrine.orm.entity_manager'
-
-  # Load DI Container Interface
-  Symfony\Component\DependencyInjection\ContainerInterface: '@service_container'
-
   # Load Event Subscribers
   Bolge\App\EventSubscriber\:
     resource: '../App/EventSubscriber'
-    public: true    
+    public: true  
 
   # Load Event Dispatcher
   Symfony\Component\EventDispatcher\EventDispatcherInterface:

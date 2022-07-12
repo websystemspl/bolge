@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Bolge\App\Controller\Api;
 
-use Bolge\App\Core\Controller;
+use Websystems\BolgeCore\Controller;
 use Bolge\App\Entity\Customer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;

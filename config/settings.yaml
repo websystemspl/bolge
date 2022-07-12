@@ -1,6 +1,5 @@
 plugin_slug: "bolge"
 plugin_slug_url: "bolge"
-framework: Bolge\App\Service\Wordpress
 env: prod
 
 paths:

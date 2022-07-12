@@ -3,30 +3,22 @@ declare(strict_types = 1);
 
 namespace Bolge\App\EventSubscriber;
 
-use Bolge\App\Core\Event\BootEvent;
-use Bolge\App\Service\ViewInterface;
-use Bolge\App\Core\FrameworkInterface;
 use Bolge\App\Service\SettingsInterface;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
+use Bolge\App\Service\WordpressInterface;
+use Websystems\BolgeCore\Event\BootEvent;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class WordpressFrontSubscriber implements EventSubscriberInterface
 {
     private SettingsInterface $settings;
-    private FrameworkInterface $framework;
+    private WordpressInterface $wordpress;
     private ?Response $response;
-    private ?Request $request;
-    private EntityManagerInterface $em;
-    private ViewInterface $view;
 
-    public function __construct(SettingsInterface $settings, FrameworkInterface $framework, EntityManagerInterface $em, ViewInterface $view)
+    public function __construct(SettingsInterface $settings, WordpressInterface $wordpress)
     {
         $this->settings = $settings;
-        $this->framework = $framework;
-        $this->em = $em;
-        $this->view = $view;
+        $this->wordpress = $wordpress;
     }
 
     public static function getSubscribedEvents()
@@ -42,12 +34,12 @@ class WordpressFrontSubscriber implements EventSubscriberInterface
     public function loadTemplate($bootEvent)
     {
         $this->response = $bootEvent->getResponse();
-        $this->framework->add_filter('template_include', [$this, 'showResponse'], 999, 1);
+        $this->wordpress->add_filter('template_include', [$this, 'showResponse'], 999, 1);
     }
 
     public function loadAssets()
     {
-        $this->framework->add_action('wp_enqueue_scripts', [$this, 'assets'], 99);
+        $this->wordpress->add_action('wp_enqueue_scripts', [$this, 'assets'], 99);
     }
 
     /**
@@ -60,9 +52,9 @@ class WordpressFrontSubscriber implements EventSubscriberInterface
     {
         if(null !== $this->response) {
             if("" !== $this->response->getContent()) {
-                $this->framework->get_header();
+                $this->wordpress->get_header();
                 echo $this->response->getContent();
-                $this->framework->get_footer();
+                $this->wordpress->get_footer();
             } else {
                 return $template;
             }
@@ -78,7 +70,7 @@ class WordpressFrontSubscriber implements EventSubscriberInterface
      */
     public function assets(): void
     {
-        $this->framework->wp_enqueue_style( 'front-styles', $this->framework->plugins_url() . '/' . $this->settings->get()->plugin_slug_url . '/' . $this->settings->get()->urls->WS_URL_DIST . '/css/app.css' );
-        $this->framework->wp_enqueue_script( 'front-scripts', $this->framework->plugins_url() . '/' . $this->settings->get()->plugin_slug_url . '/' . $this->settings->get()->urls->WS_URL_DIST . '/js/app.js' );
+        $this->wordpress->wp_enqueue_style( 'front-styles', $this->wordpress->plugins_url() . '/' . $this->settings->get()->plugin_slug_url . '/' . $this->settings->get()->urls->WS_URL_DIST . '/css/app.css' );
+        $this->wordpress->wp_enqueue_script( 'front-scripts', $this->wordpress->plugins_url() . '/' . $this->settings->get()->plugin_slug_url . '/' . $this->settings->get()->urls->WS_URL_DIST . '/js/app.js' );
     }
 }

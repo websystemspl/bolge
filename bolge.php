@@ -15,9 +15,6 @@ define('DIR_PATH', __DIR__);
 
 global $table_prefix;
 
-/* Wordpress table prefix */
-define('TABLE_PREFIX', $table_prefix);
-
 /* Autoload files */
 require __DIR__ . '/vendor/autoload.php';
 
@@ -28,8 +25,10 @@ date_default_timezone_set(get_option('timezone_string'));
 load_plugin_textdomain('bolge', false, dirname(plugin_basename(__FILE__)) . '/languages');
 
 /* App boot */
-$app = Bolge\App\Core\Core::getInstance();
-$app->setTablePrefix(TABLE_PREFIX);
+$app = Websystems\BolgeCore\BolgeCore::getInstance();
+$app->setTablePrefix($table_prefix);
+$app->setDirPath(__DIR__);
+$app->setDbConnectionParams('pdo_mysql', DB_USER, DB_PASSWORD, DB_NAME, DB_HOST);
 $app->boot(Symfony\Component\HttpFoundation\Request::createFromGlobals());
 
 /* Run on activate  */

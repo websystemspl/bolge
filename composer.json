@@ -1,29 +1,19 @@
 {
     "autoload": {
         "psr-4": {
-            "Bolge\\App\\": "App/"
+            "Bolge\\App\\": "App/",
+            "Websystems\\BolgeCore\\": "vendor/websystemspl/bolge-core/src"
         }
     },
     "require": {
-        "symfony/http-foundation": "^5.2",
-        "twig/twig": "^3.0",
-        "symfony/yaml": "^5.2",
-        "yahnis-elsts/plugin-update-checker": "^4.11",
-        "symfony/http-kernel": "^5.2",
-        "symfony/routing": "^5.2",
-        "symfony/config": "^5.2",
-        "symfony/finder": "^5.2",
-        "jasongrimes/paginator": "~1.0",
-        "symfony/dependency-injection": "5.2",
-        "symfony/property-access": "^5.2",
-        "psr/container": "1.0.0",
-        "doctrine/orm": "^2.11.0",
-        "doctrine/dbal": "^3.2",
-        "doctrine/annotations": "^1.13",
-        "symfony/cache": "^5.4",
-        "symfony/serializer": "^5.4",
-        "symfony/framework-bundle": "^5.2"
+        "websystemspl/bolge-core": "^1.0"
     },
+    "repositories":[
+        {
+            "type": "vcs",
+            "url": "https://github.com/websystemspl/bolge-core.git"
+        }
+    ] ,    
     "require-dev": {
         "symfony/var-dumper": "^5.2",
         "phpunit/phpunit": "^9"

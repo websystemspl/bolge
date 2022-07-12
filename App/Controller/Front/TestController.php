@@ -3,24 +3,23 @@ declare(strict_types = 1);
 
 namespace Bolge\App\Controller\Front;
 
-use Bolge\App\Core\Controller;
 use Bolge\App\Entity\Customer;
 use Bolge\App\Service\ViewInterface;
-use Bolge\App\Core\FrameworkInterface;
+use Websystems\BolgeCore\Controller;
 use Doctrine\ORM\EntityManagerInterface;
+use Bolge\App\Service\KeyGeneratorInterface;
+use Websystems\BolgeCore\FrameworkInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 class TestController extends Controller
 {
     private ViewInterface $view;
     private EntityManagerInterface $em;
-    private FrameworkInterface $framework;
 
-    public function __construct(ViewInterface $view, EntityManagerInterface $em, FrameworkInterface $framework)
+    public function __construct(ViewInterface $view, EntityManagerInterface $em, KeyGeneratorInterface $keyGenerator)
     {
         $this->view = $view;
         $this->em = $em;
-        $this->framework = $framework;
     }
 
     public function indexAction(): Response
