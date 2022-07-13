@@ -31,30 +31,42 @@ class WordpressFrontSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function loadTemplate($bootEvent)
+	/**
+	 * Load response to wordpress
+	 *
+	 * @param BootEvent $bootEvent
+	 * @return void
+	 */
+    public function loadTemplate(BootEvent $bootEvent)
     {
         $this->response = $bootEvent->getResponse();
         $this->wordpress->add_filter('template_include', [$this, 'showResponse'], 999, 1);
     }
 
-    public function loadAssets()
+	/**
+	 * Load assets to wordpress
+	 *
+	 * @return void
+	 */
+    public function loadAssets(): void
     {
         $this->wordpress->add_action('wp_enqueue_scripts', [$this, 'assets'], 99);
     }
 
     /**
-     * Load templates to front
+     * Show response from bolge core
      *
      * @param string $template
      * @return string|null
      */
-    public function showResponse(string $template)//: ?string
+    public function showResponse(string $template): ?string
     {
         if(null !== $this->response) {
             if("" !== $this->response->getContent()) {
                 $this->wordpress->get_header();
                 echo $this->response->getContent();
                 $this->wordpress->get_footer();
+				return null;
             } else {
                 return $template;
             }

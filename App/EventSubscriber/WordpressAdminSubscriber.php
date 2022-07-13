@@ -36,13 +36,18 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
         ];
     }
 
+	/**
+	 * Add link to settings on plugin list in wp-admin
+	 *
+	 * @return void
+	 */
     public function pluginSettingsLink()
     {
         $this->wordpress->add_filter('plugin_action_links_' . $this->settings->get()->plugin_slug . '/' . $this->settings->get()->plugin_slug . '.php', [$this, 'settingsLinkInPlugins']);
     }
 
     /**
-     * Add link to settings on plugin list in wp-admin
+     * link to settings on plugin list in wp-admin
      *
      * @param array $links
      * @return array
@@ -53,23 +58,28 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
         $url = '<a href="'. $app->getAdminUrlFromRoute('admin_test') .'">' . __( 'Settings', 'bolge' ) . '</a>';
         array_unshift($links, $url);
         return $links;
-    }    
-    
+    }
+
+	/**
+	 * Add menu pages to wp-admin menu
+	 *
+	 * @param BootEvent $bootEvent
+	 * @return void
+	 */
     public function addAdminPages(BootEvent $bootEvent)
     {
         $this->response = $bootEvent->getResponse();
-        $this->wordpress->add_action('admin_menu', [$this, 'loadToWpAdmin'], 1);
+        $this->wordpress->add_action('admin_menu', [$this, 'adminMenuPageList'], 1);
     }
 
     /**
-     * Load templates to admin
+     * Admin menu page list
      *
      * @return void
      */
-    public function loadToWpAdmin(): void
+    public function adminMenuPageList(): void
     {
         $this->wordpress->add_menu_page( __( 'Bolge', 'bolge' ), __( 'Bolge', 'bolge' ),'manage_options','test',[$this, 'printResponse'],'dashicons-admin-network',10);
-        //$this->wordpress->add_submenu_page('dashboard', __( 'Test', 'bolge' ), __( 'Test', 'bolge' ),'manage_options','license',[$this, 'printResponse'],10);  
     }
 
     /**
@@ -79,7 +89,7 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
      */
     public function loadAssets()
     {
-        $this->wordpress->add_action('admin_enqueue_scripts', [$this, 'admin_assets'], 99);
+        $this->wordpress->add_action('admin_enqueue_scripts', [$this, 'assets'], 99);
     }
 
     /**
@@ -95,18 +105,24 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
             return null;
         }
     }
-    
+
     /**
      * Add assets to admin
      *
      * @return void
      */
-    public function admin_assets(): void
+    public function assets(): void
     {
         $this->wordpress->wp_enqueue_style( 'admin-styles', $this->wordpress->plugins_url() . '/' . $this->settings->get()->plugin_slug_url . '/' . $this->settings->get()->urls->WS_URL_DIST . '/css/admin.css' );
         $this->wordpress->wp_enqueue_script( 'admin-scripts', $this->wordpress->plugins_url() . '/' . $this->settings->get()->plugin_slug_url . '/' . $this->settings->get()->urls->WS_URL_DIST . '/js/admin.js' );
-    }    
-    
+    }
+
+	/**
+	 * Fix http request for symfony routing in wp-admin
+	 *
+	 * @param HttpKernelRequestEvent $event
+	 * @return void
+	 */
     public function changeRequestPath(HttpKernelRequestEvent $event)
     {
         /** @var Request */
@@ -119,7 +135,7 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
             $response = new RedirectResponse('/');
             $response->send();
         }
-        
+
         if('/wp-admin/admin.php' === $request->server->get('SCRIPT_NAME')) {
 
             /** @var array */
@@ -139,7 +155,7 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
                 if($key != 'page' && $key != 'action') {
                     $newPath .= '/' . $queryParameter;
                 }
-            }        
+            }
 
             $request->server->set('REQUEST_URI', $newPath);
             $request->server->set('PHP_SELF', '/page.php');

@@ -3,11 +3,11 @@ index:
     path: /
     controller: Bolge\App\Core\DefaultController::defaultAction
     methods: [GET, POST]
-    
+
 # Routes ################################################################
 
 front_test:
-    path: /darek
+    path: /test
     controller: Bolge\App\Controller\Front\TestController::indexAction
     methods: [GET]
 
