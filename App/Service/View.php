@@ -76,11 +76,6 @@ class View implements ViewInterface
             return $app->getAdminUrlFromRoute($route, $values);
         });
 
-        $getUrlFromRoute = new TwigFunction('get_url_from_route', function ($route, $values = []) {
-            $app = BolgeCore::getInstance();
-            return $app->getUrlFromRoute($route, $values);
-        });
-
         $nonce = new TwigFunction('wp_nonce_field', function ($nonceField) {
             return wp_nonce_field( $nonceField );
         });
@@ -106,7 +101,6 @@ class View implements ViewInterface
         $this->twig->addFunction($howManyDays);
         $this->twig->addFunction($stripslashes);
         $this->twig->addFunction($getAdminUrlFromRoute);
-        $this->twig->addFunction($getUrlFromRoute);
         $this->twig->addFunction($nonce);
         $this->twig->addFunction($urlGeneratorUrl);
         $this->twig->addFunction($urlGeneratorPath);

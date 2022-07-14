@@ -58,8 +58,6 @@ mix.browserSync({
       },
     },
   ],
-  //port: '9100',
-  //proxy: 'laradock_workspace_1',
   proxy: 'bolge.localhost',
   host: 'bolge.localhost',
   open: false,

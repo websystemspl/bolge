@@ -1,6 +1,6 @@
 plugin_slug: "bolge"
 plugin_slug_url: "bolge"
-env: dev
+env: prod
 
 paths:
     WS_PATH: "/"
