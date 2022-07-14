@@ -63,6 +63,11 @@ class WordpressFrontSubscriber implements EventSubscriberInterface
     {
         if(null !== $this->response) {
             if("" !== $this->response->getContent()) {
+
+				global $wp_query;
+				status_header( 200 );
+				$wp_query->is_404=false;
+
                 $this->wordpress->get_header();
                 echo $this->response->getContent();
                 $this->wordpress->get_footer();

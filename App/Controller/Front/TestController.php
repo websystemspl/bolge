@@ -7,8 +7,7 @@ use Bolge\App\Entity\Customer;
 use Bolge\App\Service\ViewInterface;
 use Websystems\BolgeCore\Controller;
 use Doctrine\ORM\EntityManagerInterface;
-use Bolge\App\Service\KeyGeneratorInterface;
-use Websystems\BolgeCore\FrameworkInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 class TestController extends Controller
@@ -16,7 +15,7 @@ class TestController extends Controller
     private ViewInterface $view;
     private EntityManagerInterface $em;
 
-    public function __construct(ViewInterface $view, EntityManagerInterface $em, KeyGeneratorInterface $keyGenerator)
+    public function __construct(ViewInterface $view, EntityManagerInterface $em)
     {
         $this->view = $view;
         $this->em = $em;

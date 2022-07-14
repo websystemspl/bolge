@@ -9,16 +9,19 @@ use Websystems\BolgeCore\BolgeCore;
 use Bolge\App\Service\SettingsInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class View implements ViewInterface
 {
     private Environment $twig;
     private Session $session;
     private SettingsInterface $settings;
+	private UrlGeneratorInterface $urlGenerator;
 
-    public function __construct(SettingsInterface $settings)
+    public function __construct(SettingsInterface $settings, UrlGeneratorInterface $urlGenerator)
     {
         $this->settings = $settings;
+        $this->urlGenerator = $urlGenerator;
         $this->session = new Session();
         $this->buildTwig();
     }
@@ -82,6 +85,14 @@ class View implements ViewInterface
             return wp_nonce_field( $nonceField );
         });
 
+        $urlGeneratorUrl = new TwigFunction('url', function ($name, $parameters = []) {
+            return $this->urlGenerator->generate($name, $parameters, false);
+        });
+
+        $urlGeneratorPath = new TwigFunction('path', function ($name, $parameters = []) {
+            return $this->urlGenerator->generate($name, $parameters, true);
+        });
+
         $stripslashes = new TwigFunction('stripslashes', function ($string) {
             if(empty($string)) {
                 return '';
@@ -97,5 +108,7 @@ class View implements ViewInterface
         $this->twig->addFunction($getAdminUrlFromRoute);
         $this->twig->addFunction($getUrlFromRoute);
         $this->twig->addFunction($nonce);
+        $this->twig->addFunction($urlGeneratorUrl);
+        $this->twig->addFunction($urlGeneratorPath);
     }
 }

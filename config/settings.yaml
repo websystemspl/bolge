@@ -1,6 +1,6 @@
 plugin_slug: "bolge"
 plugin_slug_url: "bolge"
-env: prod
+env: dev
 
 paths:
     WS_PATH: "/"
@@ -15,7 +15,7 @@ urls:
     WS_URL_CACHE: "cache"
     WS_URL_DIST: "dist"
 
-database_options: 
+database_options:
     settings_options: "bolge_settings"
 
 database_meta:

@@ -4,7 +4,7 @@ namespace Bolge\App\Service;
 
 use Symfony\Component\HttpFoundation\Request;
 
-include(ABSPATH . "wp-includes/pluggable.php"); 
+include(ABSPATH . "wp-includes/pluggable.php");
 
 class Wordpress implements WordpressInterface
 {
@@ -22,7 +22,7 @@ class Wordpress implements WordpressInterface
     {
         global $wpdb;
         return $wpdb;
-    }   
+    }
 
     public function get_header()
     {
@@ -48,7 +48,7 @@ class Wordpress implements WordpressInterface
     {
         return \wp_validate_auth_cookie($cookie, $scheme);
     }
-    
+
     public function wp_redirect($location, $status = 302, $x_redirect_by = 'WordPress')
     {
         return \wp_redirect($location, $status, $x_redirect_by);
