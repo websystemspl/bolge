@@ -11,6 +11,7 @@ interface WordpressInterface
     public function database();
     public function get_header();
     public function get_footer();
+	public function getAdminUrlFromRoute(string $route, array $values = []): ?string;
     public function add_action($hook_name, $callback, $priority = 10, $accepted_args = 1);
     public function add_filter($hook_name, $callback, $priority = 10, $accepted_args = 1);
     public function wp_validate_auth_cookie($cookie = '', $scheme = '');

@@ -5,7 +5,6 @@ namespace Bolge\App\Service;
 use Twig\Environment;
 use Twig\TwigFunction;
 use Twig\Loader\FilesystemLoader;
-use Websystems\BolgeCore\BolgeCore;
 use Bolge\App\Service\SettingsInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -17,11 +16,13 @@ class View implements ViewInterface
     private Session $session;
     private SettingsInterface $settings;
 	private UrlGeneratorInterface $urlGenerator;
+	private WordpressInterface $wordpress;
 
-    public function __construct(SettingsInterface $settings, UrlGeneratorInterface $urlGenerator)
+    public function __construct(SettingsInterface $settings, UrlGeneratorInterface $urlGenerator, WordpressInterface $wordpress)
     {
         $this->settings = $settings;
         $this->urlGenerator = $urlGenerator;
+		$this->wordpress = $wordpress;
         $this->session = new Session();
         $this->buildTwig();
     }
@@ -72,8 +73,7 @@ class View implements ViewInterface
         });
 
         $getAdminUrlFromRoute = new TwigFunction('get_admin_url_from_route', function ($route, $values = []) {
-            $app = BolgeCore::getInstance();
-            return $app->getAdminUrlFromRoute($route, $values);
+            return $this->wordpress->getAdminUrlFromRoute($route, $values);
         });
 
         $nonce = new TwigFunction('wp_nonce_field', function ($nonceField) {

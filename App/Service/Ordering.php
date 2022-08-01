@@ -2,7 +2,6 @@
 
 namespace Bolge\App\Service;
 
-use Bolge\App\Core\Core;
 use Symfony\Component\HttpFoundation\Request;
 
 class Ordering implements OrderingInterface
@@ -11,7 +10,7 @@ class Ordering implements OrderingInterface
     {
         $links = [];
         foreach($databaseColumns as $databaseColumn) {
-            $links[$databaseColumn] = Core::getAdminUrlFromRoute($route, [
+            $links[$databaseColumn] = $this->wordpress->getAdminUrlFromRoute($route, [
                'current_page' => $currentPage,
                'order_by' => $databaseColumn,
                'order' => ($request->query->get('order') === 'ASC') ? 'DESC' : 'ASC',

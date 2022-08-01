@@ -5,14 +5,14 @@
         }
     },
     "require": {
-        "websystemspl/bolge-core": "^v1.1"
+        "websystemspl/bolge-core": "v1.2"
     },
     "repositories":[
         {
             "type": "vcs",
             "url": "https://github.com/websystemspl/bolge-core.git"
         }
-    ] ,    
+    ] ,
     "require-dev": {
         "symfony/var-dumper": "^5.2",
         "phpunit/phpunit": "^9"

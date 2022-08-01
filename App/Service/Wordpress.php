@@ -2,12 +2,22 @@
 
 namespace Bolge\App\Service;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\RequestContext;
+use Symfony\Component\Routing\Generator\UrlGenerator;
 
 include(ABSPATH . "wp-includes/pluggable.php");
 
 class Wordpress implements WordpressInterface
 {
+	private $container;
+
+	public function __construct(ContainerInterface $container)
+	{
+		$this->container = $container;
+	}
+
     public function authenticateCookieLoggedIn(Request $request): ?int
     {
         $wordpressLoggedInCookieName = 'wordpress_logged_in_' . md5(\get_site_option('siteurl'));
@@ -33,6 +43,43 @@ class Wordpress implements WordpressInterface
     {
         return \get_footer();
     }
+
+    /**
+     * Generate url to admin page by route
+     *
+     * @param string $route
+     * @param array $values
+     * @return ?string
+     */
+    public function getAdminUrlFromRoute(string $route, array $values = []): ?string
+    {
+        $generator = new UrlGenerator($this->container->get('routes'), new RequestContext());
+        $generated = $generator->generate($route, $values);
+        $generated = explode("/", $generated);
+        $new = '/wp-admin/admin.php?';
+        foreach($generated as $key => $par) {
+            if($key === 2) {
+                $new .= 'page='.$par;
+            }
+            if($key === 3) {
+                $new .= '&action='.$par;
+            }
+        }
+
+        $defaults = @$this->container->get('routes')->all()[$route] ?: null;
+
+        foreach($defaults->getDefaults() as $key => $param) {
+            if(isset($values[$key])) {
+                if($values[$key] === "") {
+                    return null;
+                }
+                $new .= '&'.$key.'='.$values[$key];
+            }
+        }
+
+        return $new;
+    }
+
 
     public function add_action($hook_name, $callback, $priority = 10, $accepted_args = 1)
     {

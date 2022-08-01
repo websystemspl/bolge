@@ -54,8 +54,7 @@ class WordpressAdminSubscriber implements EventSubscriberInterface
      */
     public function settingsLinkInPlugins(array $links): array
     {
-        $app = BolgeCore::getInstance();
-        $url = '<a href="'. $app->getAdminUrlFromRoute('admin_test') .'">' . __( 'Settings', 'bolge' ) . '</a>';
+        $url = '<a href="'. $this->wordpress->getAdminUrlFromRoute('admin_test') .'">' . __( 'Settings', 'bolge' ) . '</a>';
         array_unshift($links, $url);
         return $links;
     }
