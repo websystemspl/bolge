@@ -16,9 +16,9 @@ class Settings implements SettingsInterface
 
     /**
      * Get data from yaml settings
-     * 
+     *
      * @param bool $as_array - return as array (default OBJECT)
-     */    
+     */
     public function get(bool $as_array = false)
     {
         if(true === $as_array) {

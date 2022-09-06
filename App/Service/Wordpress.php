@@ -53,7 +53,7 @@ class Wordpress implements WordpressInterface
      */
     public function getAdminUrlFromRoute(string $route, array $values = []): ?string
     {
-        $generator = new UrlGenerator($this->container->get('routes'), new RequestContext());
+        $generator = new UrlGenerator($this->container->getParameter('routes'), new RequestContext());
         $generated = $generator->generate($route, $values);
         $generated = explode("/", $generated);
         $new = '/wp-admin/admin.php?';
@@ -66,7 +66,7 @@ class Wordpress implements WordpressInterface
             }
         }
 
-        $defaults = @$this->container->get('routes')->all()[$route] ?: null;
+        $defaults = @$this->container->getParameter('routes')->all()[$route] ?: null;
 
         foreach($defaults->getDefaults() as $key => $param) {
             if(isset($values[$key])) {

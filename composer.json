@@ -5,7 +5,7 @@
         }
     },
     "require": {
-        "websystemspl/bolge-core": "v1.2"
+        "websystemspl/bolge-core": "v1.3"
     },
     "repositories":[
         {

@@ -13,6 +13,7 @@ defined('ABSPATH') || exit;
 /* Plugin path */
 define('DIR_PATH', __DIR__);
 
+/** Wordpress table prefix */
 global $table_prefix;
 
 /* Autoload files */
@@ -26,10 +27,30 @@ load_plugin_textdomain('bolge', false, dirname(plugin_basename(__FILE__)) . '/la
 
 /* App boot */
 $app = Websystems\BolgeCore\BolgeCore::getInstance();
+
+/**
+ * Database table prefix (optional)
+ */
 $app->setTablePrefix($table_prefix);
+
+/**
+ * Dir path to app root directory
+ */
 $app->setDirPath(__DIR__);
+
+/**
+ * Database connection parameters
+ */
 $app->setDbConnectionParams('pdo_mysql', DB_USER, DB_PASSWORD, DB_NAME, DB_HOST);
+
+/**
+ * Boot App
+ */
 $app->boot(Symfony\Component\HttpFoundation\Request::createFromGlobals());
 
-/* Run on activate  */
+/**
+ * Core method to run update database schema
+ * and additional event subscribers once
+ * for example when plugin activated
+ */
 register_activation_hook(__FILE__, [$app, 'pluginActivate']);
